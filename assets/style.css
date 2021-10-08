@@ -47,6 +47,10 @@ label, input, button {
     /* list-style: none; */
 }
 
+.daily-list li {
+    list-style: none;
+}
+
 .search-and-previous {
     min-height: 100%;
     min-width: 25%;
