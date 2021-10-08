@@ -1,0 +1,70 @@
+header {
+    text-align: center;
+    background-image: linear-gradient(to right, blue, purple);
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    padding-bottom: 15px;
+}
+
+.main-container {
+    display: flex;
+    flex-flow: column, wrap;
+}
+
+label, input, button {
+    width: 90%;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.to-do {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#city {
+    border: 1px solid gray;
+}
+
+#search-button {
+    border: none;
+    background-color: lightblue;
+}
+
+.search-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-bottom: 2px solid black;
+}
+
+.city-searched li {
+    background-color: lightgray;
+    width: 90%;
+    margin-top: 10px;
+    text-align: center;
+    /* list-style: none; */
+}
+
+.search-and-previous {
+    min-height: 100%;
+    min-width: 25%;
+    border: 5px solid orange ;
+    padding-left: 5px;
+}
+
+.weather-container {
+    flex-flow: row;
+    border: 5px dotted black ;
+}
+
+#weather-display {
+    min-width: 70%;
+    border: 5px solid pink ;
+} 
+
+#five-day-forecast { 
+    flex-flow: row, nowrap;
+    border: 5px solid green ;
+}

@@ -13,7 +13,7 @@ var weatherContainer = document.getElementById("weather-display");
 var currentDay = moment();
 
 function displayWeather() {
-  var currentConditions = `https://api.openweathermap.org/data/2.5/weather?q=philadelphia&appid=c3b781a7de141c8e06094287b67539ce`;
+  var currentConditions = `https://api.openweathermap.org/data/2.5/weather?q=philadelphia&units=imperial&appid=5b787b122cd0fc16a703d189885623e5`;
   // var fiveDayForecast = 'api.openweathermap.org/data/2.5/forecast?q={city name}&appid={API key}'
   // links to weather api's
 
@@ -26,16 +26,15 @@ function displayWeather() {
       console.log(data.name);
       var currentDate = currentDay.format("L");
       console.log(data.weather[0].icon);
-      var fahrenheit = Math.floor((data.main.temp - 273.15) * (9 / 5) + 32);
 
       selectedCity.text(`${data.name} (${currentDate}) ${data.weather[0].icon}`);
-      currentTemp.text(`Temp: ${fahrenheit}° F`);
+      currentTemp.text(`Temp: ${data.main.temp}° F`);
       currentWind.text(`Wind: ${data.wind.speed} MPH`);
       currentHumid.text(`Humidity: ${data.main.humidity} %`);
 
       var lat = data.coord.lat;
       var lon = data.coord.lon;
-      var uvIndex = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude={part}&appid=c3b781a7de141c8e06094287b67539ce`;
+      var uvIndex = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&appid=5b787b122cd0fc16a703d189885623e5`;
 
       fetch(uvIndex)
         .then(function (response) {
@@ -54,13 +53,10 @@ function displayWeather() {
             var wind5 = $("#wind-" + i);
             var humid5 = $("#humid-" + i);
             var date = new Date(data.daily[i].dt * 1000);
-            var dailyFahrenheit = Math.floor(
-              (data.daily[i].temp.day - 273.15) * (9 / 5) + 32
-            );
 
             date5.text(date);
             icon5.text(data.daily[i].weather[0].icon);
-            temp5.text(`Temp: ${dailyFahrenheit}° F`);
+            temp5.text(`Temp: ${data.daily[i].temp.day}° F`);
             wind5.text(`Wind: ${data.daily[i].wind_speed} MPH`);
             humid5.text(`Humidity: ${data.daily[i].humidity} %`);
           }

@@ -5,98 +5,95 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather Dashboard</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF"
-      crossorigin="anonymous"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="./assets/style.css" />
   </head>
   <body>
     <header>Weather Dashboard</header>
 
-    <aside>
-      <form>
-        <label for="city">Search for a city:</label> <br />
-        <input type="text" id="city" name="city" />
-      </form>
+    <main class="main-container">
 
-      <button id="search-button">Search</button>
+      <aside class="search-and-previous">
+        <div class="search-container">
+            <form>
+            <label class="to-do" for="city">Search for a City:</label> <br />
+            <input type="text" id="city" name="city" />
+            </form>
 
-      <!-- list of previously searched cities -->
-      <ul>
-        <li></li>
-      </ul>
-    </aside>
-
-    <section id="weather-display">
-      <div>
-        <h1 id="selected-city">City and date + icon</h1>
-        <ul>
-          <li id="current-temp">Temp:</li>
-          <li id="current-wind">Wind:</li>
-          <li id="current-humid">Humidity:</li>
-          <li id="current-uv">UV Index:</li>
+            <button id="search-button">Search</button>
+        </div>
+        
+        <!-- list of previously searched cities -->
+        <ul class="city-searched">
+          <li></li>
         </ul>
-      </div>
-    </section>
+      </aside>
 
-    <section id="five-day-forecast">
-      <div>
-        <div class="day-container">
-          <h2 class="card-title" id="date-1">Date</h2>
+      <div class="weather-container">
+      <section id="weather-display">
+        <div>
+          <h1 id="selected-city">City and date + icon</h1>
           <ul>
-            <li id="icon-1">icon</li>
-            <li id="temp-1">Temp:</li>
-            <li id="wind-1">Wind:</li>
-            <li id="humid-1">Humidity:</li>
+            <li id="current-temp">Temp:</li>
+            <li id="current-wind">Wind:</li>
+            <li id="current-humid">Humidity:</li>
+            <li id="current-uv">UV Index:</li>
           </ul>
         </div>
+      </section>
 
-        <div class="day-container">
-          <h2 class="card-title" id="date-2">Date</h2>
-          <ul>
-            <li id="icon-2">icon</li>
-            <li id="temp-2">Temp:</li>
-            <li id="wind-2">Wind:</li>
-            <li id="humid-2">Humidity:</li>
-          </ul>
-        </div>
+      <section id="five-day-forecast">
+          <div class="day-container">
+            <h2 class="card-title" id="date-1">Date</h2>
+            <ul>
+              <li id="icon-1">icon</li>
+              <li id="temp-1">Temp:</li>
+              <li id="wind-1">Wind:</li>
+              <li id="humid-1">Humidity:</li>
+            </ul>
+          </div>
 
-        <div class="day-container">
-          <h2 class="card-title" id="date-3">Date</h2>
-          <ul>
-            <li id="icon-3">icon</li>
-            <li id="temp-3">Temp:</li>
-            <li id="wind-3">Wind:</li>
-            <li id="humid-4">Humidity:</li>
-          </ul>
-        </div>
+          <div class="day-container">
+            <h2 class="card-title" id="date-2">Date</h2>
+            <ul>
+              <li id="icon-2">icon</li>
+              <li id="temp-2">Temp:</li>
+              <li id="wind-2">Wind:</li>
+              <li id="humid-2">Humidity:</li>
+            </ul>
+          </div>
 
-        <div class="day-container">
-          <h2 class="card-title" id="date-4">Date</h2>
-          <ul>
-            <li id="icon-4">icon</li>
-            <li id="temp-4">Temp:</li>
-            <li id="wind-4">Wind:</li>
-            <li id="humid-4">Humidity:</li>
-          </ul>
-        </div>
+          <div class="day-container">
+            <h2 class="card-title" id="date-3">Date</h2>
+            <ul>
+              <li id="icon-3">icon</li>
+              <li id="temp-3">Temp:</li>
+              <li id="wind-3">Wind:</li>
+              <li id="humid-4">Humidity:</li>
+            </ul>
+          </div>
 
-        <div class="day-container">
-          <h2 class="card-title" id="date-5">Date</h2>
-          <ul>
-            <li id="icon-5">icon</li>
-            <li id="temp-5">Temp:</li>
-            <li id="wind-5">Wind:</li>
-            <li id="humid-5">Humidity:</li>
-          </ul>
-        </div>
+          <div class="day-container">
+            <h2 class="card-title" id="date-4">Date</h2>
+            <ul>
+              <li id="icon-4">icon</li>
+              <li id="temp-4">Temp:</li>
+              <li id="wind-4">Wind:</li>
+              <li id="humid-4">Humidity:</li>
+            </ul>
+          </div>
 
-      </div>
-
-    </section>
+          <div class="day-container">
+            <h2 class="card-title" id="date-5">Date</h2>
+            <ul>
+              <li id="icon-5">icon</li>
+              <li id="temp-5">Temp:</li>
+              <li id="wind-5">Wind:</li>
+              <li id="humid-5">Humidity:</li>
+            </ul>
+          </div>
+      </section>
+    </main>
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script
