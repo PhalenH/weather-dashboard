@@ -8,8 +8,37 @@
     <link rel="stylesheet" href="./assets/style.css" />
 </head>
 <body>
-    
+    <header>Weather Dashboard</header>
 
+    <aside>
+        <form>
+            <label for="city" >Search for a city:</label> <br>
+            <input type="text" id="city" name="city">
+        </form>
+
+        <button id ="search-button">Search</button>
+
+        <!-- list of previously searched cities -->
+        <ul>
+            <li></li>
+        </ul>
+    </aside>
+
+    <section id = "weather-display">
+        <div>
+            <h1>City and date</h1>
+            <ul>
+                <li>Temp: </li>
+                <li>Wind: </li>
+                <li>Humidity: </li>
+                <li>UV Index: </li>
+            </ul>
+        </div>
+    <!-- some api to display city and date with icon representing current weather with temp, wind, humidity, uv index -->
+    <!-- another api to display 5-day forecast that displays the date, an icon representation of weather conditions, temperature, wind speed, humidity -->
+    </section>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="./assets/main.js"></script>
 </body>
 </html>
