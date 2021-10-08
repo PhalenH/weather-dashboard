@@ -5,15 +5,33 @@ var currentTemp = $("#current-temp");
 var currentWind = $("#current-wind");
 var currentHumid = $("#current-humid");
 var currentUv = $("#current-uv");
+var weatherContainer = $('.weather-container');
+var searchButton = $('#search-button');
+var listOfCities =$('.city-searched');
+// var weatherContainer = document.getElementById("weather-display");
 
-var searchButton = document.getElementById("search-button");
-var weatherContainer = document.getElementById("weather-display");
-// var cityInput = document.getElementById("city");
-// var cityInput = $('#city').val();
 var currentDay = moment();
 
+function initial() {
+  weatherContainer.attr("style", "display: none")
+
+searchButton.on('click', function(){
+  displayWeather();
+  weatherContainer.attr("style", "display: block")
+
+  var li = $('<li>');
+    // li.attr("data-index", i);
+    listOfCities.append(li);
+    var cityInput = $('#city').val();
+    console.log(typeof cityInput)
+    li.text(cityInput.toUpperCase());
+});
+}
+
 function displayWeather() {
-  var currentConditions = `https://api.openweathermap.org/data/2.5/weather?q=philadelphia&units=imperial&appid=5b787b122cd0fc16a703d189885623e5`;
+  var cityInput = $('#city').val();
+  console.log(cityInput)
+  var currentConditions = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&units=imperial&appid=5b787b122cd0fc16a703d189885623e5`;
   // var fiveDayForecast = 'api.openweathermap.org/data/2.5/forecast?q={city name}&appid={API key}'
   // links to weather api's
 
@@ -73,7 +91,9 @@ function displayWeather() {
 }
 //closes displayweather function
 
-displayWeather();
+initial();
+
+
 
 // Events needed for
 
