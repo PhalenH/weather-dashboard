@@ -37,6 +37,21 @@ searchButton.on('click', function(){
   saveCity();
 });
 }
+// closes initial function
+
+// function renderCity() {
+//   listOfCities.innerHTML= "";
+
+//   for (var i= 0; i < city.length; i++){
+//     var highscoreInitial = highscores[i].userInitial;
+//     var highScore = highscores[i].score;
+
+//     var li = document.createElement("li");
+//     li.setAttribute("data-index", i);
+//     document.querySelector("#answer").appendChild(li);
+//     li.textContent = `${highscoreInitial} ${highScore}`;
+    
+//   };
 
 function displayWeather() {
   var cityInput = $('#city').val();
@@ -81,8 +96,8 @@ function displayWeather() {
             var wind5 = $("#wind-" + i);
             var humid5 = $("#humid-" + i);
             var wicon5 =$("#wicon-" + i)
-            var date = new Date(data.daily[i].dt * 1000);
-            // can format using moment 
+            var futurDate = new Date(data.daily[i].dt * 1000);
+            var date = moment(futurDate).format('MM/DD/YYYY');
             var iconcode = data.daily[i].weather[0].icon;
             var iconurl = "https://openweathermap.org/img/w/" + iconcode + ".png";
 
