@@ -59,7 +59,6 @@ label, input, button {
 }
 
 .weather-container {
-    flex-flow: row;
     border: 5px dotted black ;
 }
 
@@ -68,7 +67,8 @@ label, input, button {
     border: 5px solid pink ;
 } 
 
-#five-day-forecast { 
+#five-day-forecast {
+    display: flex; 
     flex-flow: row, nowrap;
     border: 5px solid green ;
 }

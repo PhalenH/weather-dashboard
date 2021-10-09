@@ -8,9 +8,16 @@ var currentUv = $("#current-uv");
 var weatherContainer = $('.weather-container');
 var searchButton = $('#search-button');
 var listOfCities =$('.city-searched');
-// var weatherContainer = document.getElementById("weather-display");
-
 var currentDay = moment();
+
+var city = []
+if (localStorage.getItem("city") != null) {
+  city = JSON.parse(localStorage.getItem("city"));
+}
+function saveCity() {
+  localStorage.setItem("city", JSON.stringify(city));
+}
+// will use push for the array rather than index, adding not replacing
 
 function initial() {
   weatherContainer.attr("style", "display: none")
@@ -25,6 +32,9 @@ searchButton.on('click', function(){
     var cityInput = $('#city').val();
     console.log(typeof cityInput)
     li.text(cityInput.toUpperCase());
+
+  city.push(cityInput)
+  saveCity();
 });
 }
 
@@ -67,18 +77,17 @@ function displayWeather() {
           for (var i = 1; i < 6; i++) {
             // console.log(data);
             var date5 = $("#date-" + i);
-            var icon5 = $("#icon-" + i);
             var temp5 = $("#temp-" + i);
             var wind5 = $("#wind-" + i);
             var humid5 = $("#humid-" + i);
             var wicon5 =$("#wicon-" + i)
             var date = new Date(data.daily[i].dt * 1000);
+            // can format using moment 
             var iconcode = data.daily[i].weather[0].icon;
             var iconurl = "https://openweathermap.org/img/w/" + iconcode + ".png";
 
             date5.text(date);
             wicon5.attr('src', iconurl);
-            // icon5.text(data.daily[i].weather[0].icon);
             temp5.text(`Temp: ${data.daily[i].temp.day}° F`);
             wind5.text(`Wind: ${data.daily[i].wind_speed} MPH`);
             humid5.text(`Humidity: ${data.daily[i].humidity} %`);
