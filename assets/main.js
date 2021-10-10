@@ -25,18 +25,17 @@ function initial() {
     displayWeather();
     weatherContainer.attr("style", "display: block");
 
-    var li = $("<li>");
-    // li.attr("data-index", i);
-    listOfCities.append(li);
-    var cityInput = $("#city").val();
-    li.text(cityInput.toUpperCase());
-
-    city.push(cityInput);
+    for (var i = 0; i < city.length; i++) {
+      var cityInput = $("#city").val();
+      if (cityInput == city[i]) {
+        return;
+      }
+    }
+    createCityList();
+    saveCity();
 
     //enter function for checking if city was previously stated
     // use for loop for said function to go through array and check if input from search == city[i] and if yes then stop, if not then goes through
-
-    saveCity();
   });
 }
 // closes initial function
@@ -63,7 +62,7 @@ function displayWeather() {
     .then(function (response) {
       // console.log(response.status);
       if (response.status === 404) {
-        alert("Error: City not found, please try again.")
+        alert("Error: City not found, please try again.");
         initial();
       }
       return response.json();
@@ -116,16 +115,24 @@ function displayWeather() {
 }
 //closes displayweather function
 
+function createCityList() {
+  var cityInput = $("#city").val();
+  var li = $("<li>");
+  // li.attr("data-index", i);
+  listOfCities.append(li);
+  li.text(cityInput.toUpperCase());
+  city.push(cityInput);
+}
+
 initial();
 
-// Events needed for
 
-// searchButton.on('click', displayWeather);
-
-// when search bar is clicked/submitted
-// will display current forecast and 5 day forecast
-
-// TheCityUserClicksOn.on('click', displayWeather)
-
-// when previously search city is clicked
-// will display current forecast and 5 day forecast
+// function checkRepeat() {
+//   for (var i = 0; i < city.length; i++) {
+//     var cityInput = $("#city").val();
+//     if (cityInput == city[i]) {
+//       return;
+//     }
+//   }
+// }
+// why does this work when typed out but not as a function when I call it before createCityList(); and saveCity();
