@@ -25,7 +25,6 @@ function initial() {
     var cityInput = $("#city").val();
     displayWeather(cityInput);
     weatherContainer.attr("style", "display: block");
-    // var cityInput = $("#city").val();
 
     for (var i = 0; i < city.length; i++) {
       if (cityInput == city[i]) {
@@ -124,7 +123,7 @@ function renderCity() {
 //         console.log($("#city-" + i));
 //         var oldCity = $("#city-" + i)[0].innerText;
 //         console.log(oldCity);
-        
+
 //         if (index == $("#city-" + i)[0].id) {
 //           console.log(oldCity);
 //           displayWeather(oldCity)

@@ -1,3 +1,7 @@
+:root {
+    --border-radius: 5px;
+}
+
 header {
     text-align: center;
     background-image: linear-gradient(to right, blue, purple);
@@ -9,6 +13,7 @@ header {
 
 h2 {
     font-size: 20px;
+    font-weight: bold;
 }
 
 .main-container {
@@ -19,7 +24,7 @@ h2 {
 label, input, button {
     width: 100%;
     margin-bottom: 10px;
-    border-radius: 5px;
+    border-radius: var(--border-radius);
 }
 
 .to-do {
@@ -49,9 +54,13 @@ label, input, button {
     width: 100%;
     margin-top: 10px;
     text-align: center;
-    /* list-style: none; */
+    list-style: none;
+    border-radius: var(--border-radius);
 }
 
+.daily-list {
+    direction: rtl;
+}
 .daily-list li {
     list-style: none;
 }
@@ -64,24 +73,39 @@ label, input, button {
 }
 
 .weather-container {
-    border: 5px dotted black ;
+    margin-right: 5px;
 }
 
 #weather-display {
     min-width: 70%;
-    /* border: 5px solid pink ; */
+    padding: 10px;
+    border: 2px solid black ;
+    margin-top: 20px;
 } 
+#five-day-title {
+    margin-top: 10px;
+}
 
 #five-day-forecast {
     display: flex; 
     flex-flow: row, nowrap;
-    /* border: 5px solid green ; */
+    margin-top: 10px;
 }
 
 .day-container {
-    /* text-align: center; */
     color: white;
-    /* border: 2px solid red; */
-    background-color: #969CBA ;
+    background-color: #2a44c2 ;
     margin-right: 15px;
+}
+
+.favorable-uv {
+    background-color: green;
+}
+
+.moderate-uv {
+    background-color: yellow;
+}
+
+.severe-uv {
+    background-color: red;
 }
