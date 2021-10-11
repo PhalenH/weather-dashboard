@@ -21,10 +21,10 @@ function saveCity() {
 function initial() {
   weatherContainer.attr("style", "display: none");
 
+  // could do eventlistener for page, then have it get key
   searchButton.on("click", function () {
     var cityInput = $("#city").val();
     displayWeather(cityInput);
-    weatherContainer.attr("style", "display: block");
 
     for (var i = 0; i < city.length; i++) {
       if (cityInput == city[i]) {
@@ -33,22 +33,27 @@ function initial() {
     }
 
     city.push(cityInput);
-    renderCity();
-    saveCity();
+    // renderCity();
+    // saveCity();
   });
 }
 // closes initial function
 
 function displayWeather(x) {
-  var cityInput = $("#city").val();
+  var cityInput = x;
+  weatherContainer.attr("style", "display: block");
+
   var currentConditions = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&units=imperial&appid=5b787b122cd0fc16a703d189885623e5`;
 
   fetch(currentConditions)
     .then(function (response) {
       // console.log(response.status);
-      if (response.status === 404) {
+      if (response.status === 404 || response.status === 400) {
         alert("Error: City not found, please try again.");
-        initial();
+        location.reload();
+      } else {
+        renderCity();
+        saveCity();
       }
       return response.json();
     })
@@ -73,12 +78,15 @@ function displayWeather(x) {
         })
         .then(function (data) {
           currentUv.text(`UV Index: ${data.current.uvi}`);
-          if(data.current.uvi > 2){
-            currentUv.addClass('moderate-uv')
-          } else if (data.current.uvi >7 ) {
-            currentUv.addClass('severe-uv')
+          currentUv.removeClass("favorable-uv")
+          currentUv.removeClass("moderate-uv")
+          currentUv.removeClass("severe-uv")
+          if (data.current.uvi < 2) {
+            currentUv.addClass("favorable-uv");
+          } else if (data.current.uvi > 2 && data.current.uvi < 7) {
+            currentUv.addClass("moderate-uv");
           } else {
-            currentUv.addClass('favorable-uv')
+            currentUv.addClass("severe-uv");
           }
 
           for (var i = 1; i < 6; i++) {
@@ -118,40 +126,25 @@ function renderCity() {
   }
 }
 
-// function displayOldCity() {
-//   listOfCities.on("click", function (event) {
-//     var element = event.target;
+function displayOldCity() {
+  listOfCities.on("click", function (event) {
+    var element = event.target;
 
-//     if (element.matches("p") === true) {
-//       var index = element.getAttribute("id");
-//       console.log(index);
+    if (element.matches("p") === true) {
+      var index = element.getAttribute("id");
 
-//       for (var i = 0; i < city.length; i++) {
-//         console.log($("#city-" + i));
-//         var oldCity = $("#city-" + i)[0].innerText;
-//         console.log(oldCity);
+      for (var i = 0; i < city.length; i++) {
+        var oldCity = $("#city-" + i)[0].innerText;
 
-//         if (index == $("#city-" + i)[0].id) {
-//           console.log(oldCity);
-//           displayWeather(oldCity)
-//           break;
-//           // displayWeather(oldCity)
-//         }
-//       }
-//     }
-//   });
-// }
+        if (index == $("#city-" + i)[0].id) {
+          displayWeather(oldCity);
+          break;
+        }
+      }
+    }
+  });
+}
 
 renderCity();
-// displayOldCity();
+displayOldCity();
 initial();
-
-// function checkRepeat() {
-//   for (var i = 0; i < city.length; i++) {
-//     var cityInput = $("#city").val();
-//     if (cityInput == city[i]) {
-//       return;
-//     }
-//   }
-// }
-// why does this work when typed out but not as a function when I call it before createCityList(); and saveCity();
