@@ -29,6 +29,7 @@ label, input, button {
 
 #city {
     border: 1px solid gray;
+    text-transform: uppercase;
 }
 
 #search-button {

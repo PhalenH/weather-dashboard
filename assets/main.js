@@ -22,9 +22,10 @@ function initial() {
   weatherContainer.attr("style", "display: none");
 
   searchButton.on("click", function () {
-    displayWeather();
-    weatherContainer.attr("style", "display: block");
     var cityInput = $("#city").val();
+    displayWeather(cityInput);
+    weatherContainer.attr("style", "display: block");
+    // var cityInput = $("#city").val();
 
     for (var i = 0; i < city.length; i++) {
       if (cityInput == city[i]) {
@@ -35,12 +36,11 @@ function initial() {
     city.push(cityInput);
     renderCity();
     saveCity();
-    
   });
 }
 // closes initial function
 
-function displayWeather() {
+function displayWeather(x) {
   var cityInput = $("#city").val();
   var currentConditions = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&units=imperial&appid=5b787b122cd0fc16a703d189885623e5`;
 
@@ -106,12 +106,38 @@ function renderCity() {
 
   for (var i = 0; i < city.length; i++) {
     var li = document.createElement("li");
-    li.setAttribute("data-index", i);
-    document.querySelector(".city-searched").appendChild(li);
     li.textContent = city[i].toUpperCase();
+    li.setAttribute("id", "city-" + i);
+    document.querySelector(".city-searched").appendChild(li);
   }
 }
+
+// function displayOldCity() {
+//   listOfCities.on("click", function (event) {
+//     var element = event.target;
+
+//     if (element.matches("li") === true) {
+//       var index = element.getAttribute("id");
+//       console.log(index);
+
+//       for (var i = 0; i < city.length; i++) {
+//         console.log($("#city-" + i));
+//         var oldCity = $("#city-" + i)[0].innerText;
+//         console.log(oldCity);
+        
+//         if (index == $("#city-" + i)[0].id) {
+//           console.log(oldCity);
+//           displayWeather(oldCity)
+//           break;
+//           // displayWeather(oldCity)
+//         }
+//       }
+//     }
+//   });
+// }
+
 renderCity();
+// displayOldCity();
 initial();
 
 // function checkRepeat() {
