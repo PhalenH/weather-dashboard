@@ -49,9 +49,10 @@ label, input, button {
     border-bottom: 2px solid black;
 }
 
-.city-searched li {
+.city-searched p {
     background-color: lightgray;
     width: 100%;
+    padding: 5px 0px;
     margin-top: 10px;
     text-align: center;
     list-style: none;
@@ -104,9 +105,12 @@ label, input, button {
     padding: 5px 30px 5px 5px;
     text-align: left;
 }
+#current-uv {
+    display: inline;
+}
 
 .favorable-uv {
-    background-color: green;
+    background-color: lightgreen;
 }
 
 .moderate-uv {

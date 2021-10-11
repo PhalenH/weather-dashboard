@@ -73,6 +73,13 @@ function displayWeather(x) {
         })
         .then(function (data) {
           currentUv.text(`UV Index: ${data.current.uvi}`);
+          if(data.current.uvi > 2){
+            currentUv.addClass('moderate-uv')
+          } else if (data.current.uvi >7 ) {
+            currentUv.addClass('severe-uv')
+          } else {
+            currentUv.addClass('favorable-uv')
+          }
 
           for (var i = 1; i < 6; i++) {
             var date5 = $("#date-" + i);
@@ -104,10 +111,10 @@ function renderCity() {
   listOfCities.text("");
 
   for (var i = 0; i < city.length; i++) {
-    var li = document.createElement("li");
-    li.textContent = city[i].toUpperCase();
-    li.setAttribute("id", "city-" + i);
-    document.querySelector(".city-searched").appendChild(li);
+    var pEl = document.createElement("p");
+    pEl.textContent = city[i].toUpperCase();
+    pEl.setAttribute("id", "city-" + i);
+    document.querySelector(".city-searched").appendChild(pEl);
   }
 }
 
@@ -115,7 +122,7 @@ function renderCity() {
 //   listOfCities.on("click", function (event) {
 //     var element = event.target;
 
-//     if (element.matches("li") === true) {
+//     if (element.matches("p") === true) {
 //       var index = element.getAttribute("id");
 //       console.log(index);
 
