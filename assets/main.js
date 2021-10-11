@@ -24,35 +24,21 @@ function initial() {
   searchButton.on("click", function () {
     displayWeather();
     weatherContainer.attr("style", "display: block");
+    var cityInput = $("#city").val();
 
     for (var i = 0; i < city.length; i++) {
-      var cityInput = $("#city").val();
       if (cityInput == city[i]) {
         return;
       }
     }
-    createCityList();
-    saveCity();
 
-    //enter function for checking if city was previously stated
-    // use for loop for said function to go through array and check if input from search == city[i] and if yes then stop, if not then goes through
+    city.push(cityInput);
+    renderCity();
+    saveCity();
+    
   });
 }
 // closes initial function
-
-// function renderCity() {
-//   listOfCities.innerHTML= "";
-
-//   for (var i= 0; i < city.length; i++){
-//     var highscoreInitial = highscores[i].userInitial;
-//     var highScore = highscores[i].score;
-
-//     var li = document.createElement("li");
-//     li.setAttribute("data-index", i);
-//     document.querySelector("#answer").appendChild(li);
-//     li.textContent = `${highscoreInitial} ${highScore}`;
-
-//   };
 
 function displayWeather() {
   var cityInput = $("#city").val();
@@ -115,17 +101,18 @@ function displayWeather() {
 }
 //closes displayweather function
 
-function createCityList() {
-  var cityInput = $("#city").val();
-  var li = $("<li>");
-  // li.attr("data-index", i);
-  listOfCities.append(li);
-  li.text(cityInput.toUpperCase());
-  city.push(cityInput);
+function renderCity() {
+  listOfCities.text("");
+
+  for (var i = 0; i < city.length; i++) {
+    var li = document.createElement("li");
+    li.setAttribute("data-index", i);
+    document.querySelector(".city-searched").appendChild(li);
+    li.textContent = city[i].toUpperCase();
+  }
 }
-
+renderCity();
 initial();
-
 
 // function checkRepeat() {
 //   for (var i = 0; i < city.length; i++) {
