@@ -58,9 +58,14 @@ label, input, button {
     border-radius: var(--border-radius);
 }
 
-.daily-list {
-    direction: rtl;
+/* .daily-list {
+
+} */
+
+#wicon {
+    margin-left: 30px;
 }
+
 .daily-list li {
     list-style: none;
 }
@@ -96,6 +101,8 @@ label, input, button {
     color: white;
     background-color: #2a44c2 ;
     margin-right: 15px;
+    padding: 5px 30px 5px 5px;
+    text-align: left;
 }
 
 .favorable-uv {
