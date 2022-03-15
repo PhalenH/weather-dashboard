@@ -1,4 +1,4 @@
-# work-day-scheduler
+# Weather Dashboard
 
 ## Description
 
@@ -39,7 +39,15 @@ I adjust sizing, colors, borders, and presentation for content on the page, with
 
 ## Finished Product
 
-Here is a screenshot and link to the finished code quiz:
+Here is a screenshot and link to the finished weather dashboard
 [Link to webpage](https://phalenh.github.io/weather-dashboard/index.html)
 
-![Code quiz page with 5 questions about JavaScript](./assets/weather-dashboard.png)
+![weather dashboard screenshot](./assets/weather-dashboard.png)
+
+
+## Contributing: 
+- There a no plans for public contribution at this time.
+
+## Questions
+- If you have any questions, email me at: phalenhazel@gmail.com
+- Checkout my GitHub profile [here](https://github.com/PhalenH)
